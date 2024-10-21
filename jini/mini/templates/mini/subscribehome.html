@@ -1,0 +1,16 @@
+{% extends "mini/base.html" %}
+{% block title %}Mini{% endblock title %}
+{% block content %}
+<div class="container">
+    <h5 class="subscribe-introo">Dive into the world of Jini!</h5>
+    <h3 class="subscribe-intro">Subscribe Now!</h3>
+    <form action='subscribed/' method="POST">{% csrf_token %}
+        <input class="infields" name="user_name" placeholder="Name">
+        <br>
+        <input class="infields" name="user_email" placeholder="Enter your email" required>
+        <br>
+        <button class="btn btn-primary" type="submit" value="Submit">Subscribe</button>
+    </form>
+    {% comment %} <a href="{% url "send_email" %}" class="btn btn-primary">Subscribe</a> {% endcomment %}
+</div>
+{% endblock content %}

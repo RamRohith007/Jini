@@ -1,0 +1,43 @@
+{% extends "mini/base.html" %}
+{% block title %}PicStock-Collections{% endblock title %}
+{% block content %}
+<div class="container d-flex">
+    <br>
+    <h3 class="picstock-collectionheader">PicStock - Collections</h3>
+    <a class="upload-link" href="{% url "uploadpics" %}">Upload Pic</a>
+    <br>
+</div>
+<br>
+<div class="container d-flex justify-content-center">
+<div class="container">
+        <div class="row">
+            {% for post in posts %}
+            <div class="col-lg-6 col-md-12 picstock-card">
+                <div class="card mb-5 picard" style="max-width: 49rem;">
+                    <img class="picard-image" src="{{ post.image.url }}" class="card-img-top" alt="{{ post.name }}">
+                    <div class="card-body">
+                      <h6 class="card-title">{{ post.name }}</h6>
+                      <p class="card-text"><small class="text-body-secondary"><em>Uploaded by -</em>{{ post.owner }}</small></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+
+
+
+{% comment %} failsafe <div class="card mb-5" style="max-width: 28rem;">
+        <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.name }}">
+        <div class="card-body">
+          <h6 class="card-title">{{ post.name }}</h6>
+          <p class="card-text"><small class="text-body-secondary"><em>Uploaded by -</em>{{ post.owner }}</small></p>
+        </div>
+    </div> {% endcomment %}
+    {% comment %} {% endfor %} {% endcomment %}

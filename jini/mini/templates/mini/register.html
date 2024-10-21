@@ -1,0 +1,22 @@
+{% extends "mini/base.html" %}
+
+{% load crispy_forms_tags %}
+{% block title %}Register{% endblock title %}
+{% block content %}
+    <br>
+    <div class="container bg-light shadow-md p-3 form-layout">
+        <br>
+        <h4>Create your account...</h4>
+        <hr>
+        <form method="POST" autocomplete="off">{% csrf_token %}
+        {{registerform.username|as_crispy_field}}
+        <br>
+        {{registerform.password1|as_crispy_field}}
+        {{registerform.password2|as_crispy_field}}
+        <br>
+        <button class="btn btn-primary w-100 w-md-40 btn-block p-2" type="submit">Create Account &nbsp;<i class="fa fa-user"></i></button>
+        </form>
+        <br>
+        <p class="text-center">Already have an account? &nbsp;<a href={% url 'login' %}>Login here</a></p>
+    </div>
+{% endblock %}

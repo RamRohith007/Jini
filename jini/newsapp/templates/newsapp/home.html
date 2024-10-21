@@ -1,0 +1,48 @@
+{% extends "mini/base.html" %}
+{% block title %}NewsApp{% endblock title %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container d-flex">
+    <h3 class="newsapp-intro">NewsApp</h3>
+    <br>
+</div>
+<br>
+<div class="container">
+    <form method="POST">{% csrf_token %}
+        <label class="labels" for="country">Country:</label>
+        <select class="selects" name="country" id="country">
+            <option value="in" {% if current_country == 'in' %}selected{% endif %}>India</option>
+            <option value="us" {% if current_country == 'us' %}selected{% endif %}>United States</option>
+            <option value="gb" {% if current_country == 'gb' %}selected{% endif %}>England</option>
+            <option value="rs" {% if current_country == 'rs' %}selected{% endif %}>Russia</option>
+            <option value="fr" {% if current_country == 'fr' %}selected{% endif %}>France</option>
+        </select>
+        &nbsp;
+        <label class="labels" for="category">Category:</label>
+        <select class="selects" name="category" id="category">
+            <option value="general"  {% if current_category == 'general' %}selected{% endif %}>General</option>
+            <option value="business" {% if current_category == 'business' %}selected{% endif %}>Business</option>
+            <option value="entertainment" {% if current_category == 'entertainment' %}selected{% endif %}>Entertainment</option>
+            <option value="health" {% if current_category == 'health' %}selected{% endif %}>Health</option>
+            <option value="science" {% if current_category == 'science' %}selected{% endif %}>Science</option>
+            <option value="sports" {% if current_category == 'sports' %}selected{% endif %}>Sports</option>
+            <option value="technology" {% if current_category == 'technology' %}selected{% endif %}>Technology</option>
+        </select>
+        &nbsp;
+        <button class="go-sumbit" type="submit" value='submit'>&nbsp;&nbsp;Go.. &nbsp;&nbsp;</button>
+        </form>
+<br>
+{% for news in news_data %}
+<div class="card mb-3">
+    {% comment %} <img src="{{news.urlToImage}}" class="card-img-top" alt="{{news.title}}"> {% endcomment %}
+    <div class="card-body">
+      <h5 class="card-title">{{news.title}}</h5>
+      <p class="card-text">{{news.description}}</p>
+      <p class="card-text"><small class="text-body-secondary"><em>Published at -</em>{{news.publishedAt}}</small></p>
+    </div>
+</div>
+    {% comment %} {{news.title}} {% endcomment %}
+<br>
+{% endfor %}
+</div>
+{% endblock content %}

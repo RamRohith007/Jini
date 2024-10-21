@@ -1,0 +1,57 @@
+{% load static %}
+<header>
+<nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary justify-content-center gradient-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand main-heading brand" href="{% url 'welcome' %}"><img src="{% static "images/jinn.png" %}" alt="Jini" width="35" height="35">&nbsp;Jini</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav ms-auto">
+          &nbsp; &nbsp; &nbsp;
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'newsapphome' %}">News&nbsp;<i class="fa fa-newspaper-o"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'picstockcollections' %}">PicStock&nbsp;<i class="fa fa-photo"></i></a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'subscribehome' %}">Subscribe&nbsp;<i class="fa fa-send-o"></i></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Signout&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i></i></a>
+          </li>
+      </ul>
+      {% else %}
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Register&nbsp;<i class="fa fa-address-book-o"></i></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login&nbsp;<i class="fa fa-user-circle-o"></i></a>
+      </li>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+</header>
+
+
+
+{% comment %} <header>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-light gradient-custom">
+      <div class="container-fluid">
+      <div>
+        <h3 class="brand">&nbsp;&nbsp;&nbsp;<a class="navbar-brand" href="{% url "welcome" %}"><img src="{% static "images/jinn.png" %}" alt="Jini" width="30" height="30">&nbsp;Jini</a></h3>
+      </div>
+      <div>
+        <a class="nav-item" href="{% url "newsapphome" %}">News</a>
+        &nbsp;&nbsp;&nbsp;
+        <a class="nav-item" href="{% url "picstockcollections" %}">PicStock</a>
+        &nbsp;&nbsp;&nbsp;
+        <a class="nav-item" href="{% url "subscribehome" %}">Subscribe</a>
+        &nbsp;&nbsp;&nbsp;
+      </div>
+      </div>
+  </nav>
+</header> {% endcomment %}
